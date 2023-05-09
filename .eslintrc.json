@@ -1,0 +1,98 @@
+{
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "ignorePatterns": ["node_modules", "dist", "build"],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react/recommended",
+      "plugin:prettier/recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings",
+      "plugin:jsx-a11y/recommended",
+      "airbnb",
+      "prettier"
+    ],
+  
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "requireConfigFile": false,
+      "babelOptions": {
+        "parserOpts": {
+          "plugins": ["jsx"]
+        },
+        "babelrc": false,
+        "configFile": false
+      },
+      "ecmaVersion": 12,
+      "sourceType": "module"
+    },
+    "plugins": ["react", "prettier", "import", "jsx-a11y", "@typescript-eslint"],
+    "rules": {
+      "import/extensions": [
+        "error",
+        "ignorePackages",
+        {
+          "js": "never",
+          "jsx": "never",
+          "ts": "never",
+          "tsx": "never"
+        }
+      ],
+      "react/function-component-definition": "off",
+      "react/self-closing-comp": "warn",
+      "react/static-property-placement": "off",
+      "react/prefer-stateless-function": "off",
+      "react/button-has-type": "off",
+      "react/state-in-constructor": "off",
+      "no-plusplus": "warn",
+      "no-unused-vars": "warn",
+      "no-console": "warn",
+      "no-param-reassign": "off",
+      "no-underscore-dangle": "off",
+      "no-return-await": "warn",
+      "default-param-last": "warn",
+      "import/no-extraneous-dependencies": "off",
+      "import/prefer-default-export": "off",
+      "arrow-body-style": "off",
+      "func-names": "off",
+      "jsx-a11y/label-has-associated-control": "off",
+      "@typescript-eslint/no-non-null-assertion": "off",
+  
+      "class-methods-use-this": "off",
+      "react/no-unused-prop-types": "off",
+      "prefer-arrow-callback": "off",
+      "react/jsx-props-no-spreading": "off",
+      "prettier/prettier": "error",
+      "react/react-in-jsx-scope": "off",
+      "react/prop-types": 0,
+      "react/jsx-uses-react": "error",
+      "react/jsx-uses-vars": "error",
+      "import/no-unresolved": [2, { "caseSensitive": false }],
+      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+      "import/order": [
+        0,
+        {
+          "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+          "newlines-between": "always"
+        }
+      ]
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      },
+      "import/resolver": {
+        "node": {
+          "extensions": [".js", ".jsx", ".ts", ".tsx"],
+          "moduleDirectory": ["node_modules", "src/"]
+        }
+      }
+    }
+  }

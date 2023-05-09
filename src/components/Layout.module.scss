@@ -1,0 +1,24 @@
+$green: #52c41a;
+$white: #fff;
+
+.Layout {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 22px;
+  background-color: $white;
+}
+.logo {
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 28px;
+}
+.panel {
+  display: flex;
+  column-gap: 19px;
+  &_btnSignup {
+    color: $green;
+    border: 1px solid $green;
+    border-radius: 5px;
+    padding: 6px 18px;
+  }
+}
