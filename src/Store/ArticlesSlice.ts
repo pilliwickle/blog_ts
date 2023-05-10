@@ -24,6 +24,7 @@ type IArticlesState = {
   articlesCount: number;
   loading: boolean;
   error: string | null;
+  currentPage: number;
 };
 
 const initialState: IArticlesState = {
@@ -31,12 +32,13 @@ const initialState: IArticlesState = {
   articlesCount: 0,
   loading: true,
   error: null,
+  currentPage: 1,
 };
 
-export const fetchArticles = createAsyncThunk<IArticles[], undefined, { rejectValue: string }>(
+export const fetchArticles = createAsyncThunk<IArticles[], number, { rejectValue: string }>(
   'articles/fetchArticles',
-  async (_, { rejectWithValue }) => {
-    const res = await fetch('https://blog.kata.academy/api/articles?limit=5');
+  async (current, { rejectWithValue }) => {
+    const res = await fetch(`https://blog.kata.academy/api/articles?limit=5&offset=${current * 5}`);
 
     if (!res.ok) {
       return rejectWithValue('Server Error!!!');
@@ -63,7 +65,11 @@ export const fetchArticlesCount = createAsyncThunk<number, undefined, { rejectVa
 const slice = createSlice({
   name: 'articles',
   initialState,
-  reducers: {},
+  reducers: {
+    changePage(state, action: PayloadAction<number>) {
+      state.currentPage = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchArticles.pending, (state) => {
@@ -85,4 +91,5 @@ const slice = createSlice({
   },
 });
 
+export const { changePage } = slice.actions;
 export default slice.reducer;

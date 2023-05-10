@@ -1,0 +1,11 @@
+$green: #52c41a;
+$white: #fff;
+$black: #000;
+$grey: rgba(0, 0, 0, 0.5);
+$blue: #1890ff;
+
+@mixin description {
+  color: $grey;
+  font-size: 12px;
+  line-height: 22px;
+}

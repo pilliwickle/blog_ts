@@ -13,4 +13,5 @@ export interface IArticleIItem {
   description: string;
   createdAt: string;
   author: IAuthor;
+  favoritesCount: number;
 }

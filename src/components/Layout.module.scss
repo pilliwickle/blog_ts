@@ -1,6 +1,4 @@
-$green: #52c41a;
-$white: #fff;
-$black: #000;
+@import '../color/color.module.scss';
 
 .Layout {
   display: flex;
