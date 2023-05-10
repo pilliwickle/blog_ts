@@ -1,5 +1,6 @@
 $green: #52c41a;
 $white: #fff;
+$black: #000;
 
 .Layout {
   display: flex;
@@ -11,6 +12,7 @@ $white: #fff;
   font-family: inherit;
   font-size: 18px;
   line-height: 28px;
+  color: $black;
 }
 .panel {
   display: flex;
@@ -21,4 +23,8 @@ $white: #fff;
     border-radius: 5px;
     padding: 6px 18px;
   }
+}
+.footer {
+  text-align: center;
+  padding: 12px;
 }

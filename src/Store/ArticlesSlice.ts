@@ -21,20 +21,22 @@ type IArticles = {
 
 type IArticlesState = {
   articles: IArticles[];
+  articlesCount: number;
   loading: boolean;
   error: string | null;
 };
 
 const initialState: IArticlesState = {
   articles: [],
+  articlesCount: 0,
   loading: true,
   error: null,
 };
 
 export const fetchArticles = createAsyncThunk<IArticles[], undefined, { rejectValue: string }>(
   'articles/fetchArticles',
-  async function (_, { rejectWithValue }) {
-    const res = await fetch('https://blog.kata.academy/api/articles');
+  async (_, { rejectWithValue }) => {
+    const res = await fetch('https://blog.kata.academy/api/articles?limit=5');
 
     if (!res.ok) {
       return rejectWithValue('Server Error!!!');
@@ -45,6 +47,19 @@ export const fetchArticles = createAsyncThunk<IArticles[], undefined, { rejectVa
   }
 );
 
+export const fetchArticlesCount = createAsyncThunk<number, undefined, { rejectValue: string }>(
+  'articles/fetchArticlesCount',
+  async (_, { rejectWithValue }) => {
+    const res = await fetch('https://blog.kata.academy/api/articles');
+
+    if (!res.ok) {
+      return rejectWithValue('Server Error!!!');
+    }
+
+    const data = await res.json();
+    return data.articlesCount;
+  }
+);
 const slice = createSlice({
   name: 'articles',
   initialState,
@@ -59,6 +74,13 @@ const slice = createSlice({
         state.articles = action.payload;
         state.loading = false;
         state.error = null;
+      })
+      .addCase(fetchArticlesCount.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchArticlesCount.fulfilled, (state, action) => {
+        state.articlesCount = action.payload;
       });
   },
 });

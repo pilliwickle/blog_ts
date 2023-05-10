@@ -1,6 +1,4 @@
 import { FC } from 'react';
 
-const SignIn: FC = () => {
-  return <div>SignIn</div>;
-};
+const SignIn: FC = () => <div>SignIn</div>;
 export { SignIn };

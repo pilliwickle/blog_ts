@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import Reducer from './ArticlesSlice';
+import ArtReducer from './SingleArticleSlice';
 
 const store = configureStore({
   reducer: {
     articles: Reducer,
+    article: ArtReducer,
   },
 });
 export default store;
