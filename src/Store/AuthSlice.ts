@@ -1,16 +1,17 @@
 import { AnyAction, createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ILogin, ISignUpRequest } from '../model/signup';
 
-export interface IRes {
+export interface IResponse {
+  username: string;
   email: string;
   token: string;
-  username: string;
+
   bio: string;
   image: string;
 }
 
 export interface IRequestState {
-  data: IRes;
+  data: IResponse;
   loading: boolean;
   error: string;
   isAuth: boolean;
@@ -33,7 +34,7 @@ const isError = (action: AnyAction) => {
   return action.type.endsWith('rejected');
 };
 
-export const registration = createAsyncThunk<IRes, ISignUpRequest, { rejectValue: string }>(
+export const registration = createAsyncThunk<IResponse, ISignUpRequest, { rejectValue: string }>(
   'reg/registration',
   async function (regInfo, { rejectWithValue }) {
     const response = await fetch('https://blog.kata.academy/api/users', {
@@ -49,11 +50,11 @@ export const registration = createAsyncThunk<IRes, ISignUpRequest, { rejectValue
     }
 
     const data = await response.json();
-    return data.user as IRes;
+    return data.user as IResponse;
   }
 );
 
-export const login = createAsyncThunk<IRes, ILogin, { rejectValue: string }>(
+export const login = createAsyncThunk<IResponse, ILogin, { rejectValue: string }>(
   'reg/login',
   async function (loginInfo, { rejectWithValue }) {
     const responseLogin = await fetch('https://blog.kata.academy/api/users/login', {
@@ -68,13 +69,13 @@ export const login = createAsyncThunk<IRes, ILogin, { rejectValue: string }>(
       return rejectWithValue('Cant add new user!');
     }
     const data = await responseLogin.json();
-    const user = data.user as IRes;
+    const user = data.user as IResponse;
     localStorage.setItem('token', user.token);
     return user;
   }
 );
 
-export const getCurrentUser = createAsyncThunk<IRes, string, { rejectValue: string }>(
+export const getCurrentUser = createAsyncThunk<IResponse, string, { rejectValue: string }>(
   'get/getCurrentUser',
   async function (token, { rejectWithValue }) {
     const response = await fetch('https://blog.kata.academy/api/user', {
@@ -89,7 +90,7 @@ export const getCurrentUser = createAsyncThunk<IRes, string, { rejectValue: stri
     }
 
     const data = await response.json();
-    const user = data.user as IRes;
+    const user = data.user as IResponse;
     localStorage.setItem('token', user.token);
     return user;
   }

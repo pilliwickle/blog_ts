@@ -11,3 +11,13 @@ $red: #f5222d;
   font-size: 12px;
   line-height: 22px;
 }
+@mixin break {
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+@mixin title {
+  color: $blue;
+  font-size: 20px;
+  line-height: 28px;
+}

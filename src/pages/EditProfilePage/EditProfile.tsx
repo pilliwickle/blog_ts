@@ -1,59 +1,67 @@
 import { FC } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import style from './RegPage.module.scss';
-import { ISubmitForm } from '../../types/types';
-import { ISignUpRequest } from '../../model/signup';
-import { useAppDispatch } from '../../Store/customHooks';
-import { registration } from '../../Store/AuthSlice';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-const RegPage: FC = () => {
+import { IEditProfileRequest, ISubmitEditForm } from './types';
+import { useAppDispatch, useAppSelector } from '../../Store/customHooks';
+
+import style from './EditProfile.module.scss';
+import { editProfile } from '../../Store/EditSlice';
+
+const EditProfile: FC = () => {
   const dispatch = useAppDispatch();
+  const { username, email } = useAppSelector((state) => state.reg.data);
 
   const navigate = useNavigate();
   const location = useLocation();
   const fromPage = location.state?.from?.pathname || '/';
-
   const {
     register,
     formState: { errors, isValid },
     handleSubmit,
-    getValues,
     reset,
-  } = useForm<ISubmitForm>({
+  } = useForm<ISubmitEditForm>({
     mode: 'onChange',
+    defaultValues: { username, email },
   });
 
-  const onSubmit: SubmitHandler<ISubmitForm> = (data: ISubmitForm) => {
-    const requestData: ISignUpRequest = {
+  const onSubmit: SubmitHandler<ISubmitEditForm> = (data: ISubmitEditForm) => {
+    const myToken = localStorage.getItem('token');
+    const requestData: IEditProfileRequest = {
       user: {
         username: data.username,
         email: data.email,
-        password: data.pass,
+        password: data.password,
+        image: data.image,
+        token: myToken!,
       },
     };
     reset();
-    dispatch(registration(requestData));
+    dispatch(editProfile(requestData));
     navigate(fromPage, { replace: true });
   };
 
   return (
     <div className={style.RegPage}>
       <div className={style.regForm}>
-        <h2 className={style.formTitle}>Create new account</h2>
+        <h2 className={style.formTitle}>Edit Profile</h2>
         <form onSubmit={handleSubmit(onSubmit)} className={style.form}>
           <label className={style.inputBlock}>
             Username
             <input
               {...register('username', {
                 required: 'Required field',
+                pattern: {
+                  value: /^[a-z][a-z0-9]*$/,
+                  message: 'You can only use lowercase English letters and numbers',
+                },
                 minLength: {
                   value: 3,
-                  message: 'Your username needs to be at least 6 characters',
+                  message: 'Your username needs to be at least 3 characters',
                 },
                 maxLength: {
-                  value: 30,
-                  message: 'Max length 30 letters',
+                  value: 20,
+                  message: 'Max length 20 letters',
                 },
               })}
               placeholder="Username"
@@ -81,7 +89,7 @@ const RegPage: FC = () => {
           <label className={style.inputBlock}>
             Password
             <input
-              {...register('pass', {
+              {...register('password', {
                 required: 'Required field',
                 minLength: {
                   value: 6,
@@ -97,37 +105,19 @@ const RegPage: FC = () => {
               className={style.input}
             />
           </label>
-          {errors.pass && <p className={style.error}>{errors.pass.message}</p>}
+          {errors.password && <p className={style.error}>{errors.password.message}</p>}
           <label className={style.inputBlock}>
-            Repeate password
+            Avatar image(url)
             <input
-              {...register('repeatePass', {
+              {...register('image', {
                 required: 'Required field!!',
-                validate: (value: string, allValues: ISubmitForm) => {
-                  const { pass } = allValues;
-                  return pass === value;
-                },
               })}
-              type="password"
-              placeholder="Repeate password"
+              type="text"
+              placeholder="Avatar image"
               className={style.input}
             />
           </label>
-          {getValues('repeatePass') !== getValues('pass') && (
-            <p className={style.error}>Passwords must mutch!</p>
-          )}
-          {errors.repeatePass && <p className={style.error}>{errors.repeatePass.message}</p>}
-          <label className={style.check}>
-            <input
-              {...register('checkbox', {
-                required: 'Required field',
-              })}
-              type="checkbox"
-              className={style.checkBox}
-            />
-            I agree to the processing of my personal information
-          </label>
-          {errors.checkbox && <p className={style.error}>{errors.checkbox.message}</p>}
+          {errors.image && <p className={style.error}>{errors.image.message}</p>}
           <button className={style.formBtn}>
             <input type="submit" value="Create" disabled={!isValid} />
           </button>
@@ -142,4 +132,4 @@ const RegPage: FC = () => {
     </div>
   );
 };
-export { RegPage };
+export { EditProfile };

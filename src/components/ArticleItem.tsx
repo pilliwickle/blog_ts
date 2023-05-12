@@ -1,6 +1,3 @@
-import { FC } from 'react';
-import cuid from 'cuid';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import { Link } from 'react-router-dom';
 
 import { textCut } from '../utils/text';

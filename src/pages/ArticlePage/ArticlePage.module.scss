@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   width: 940px;
-  height: 700px;
+  min-height: 700px;
   background-color: $white;
   padding: 16px;
   margin: 26px auto;
@@ -12,16 +12,18 @@
 .title_like {
   display: flex;
   align-items: center;
+  width: 640px;
 }
 .favoritesCount {
   margin-left: 5px;
 }
 .title {
-  color: &blue;
-  font-size: 20px;
-  line-height: 28px;
-  margin-bottom: 5px;
-  margin-right: 13px;
+  margin: 0 13px 5px 0;
+  @include title;
+  @include break;
+}
+.artInfo {
+  width: 700px;
 }
 .articlesTags {
   margin-bottom: 8px;
@@ -38,11 +40,13 @@
 }
 .description {
   margin-top: 16px;
+  @include break;
   @include description;
 }
 .articleBody {
   margin-top: 25px;
   color: $black;
+  @include break;
   width: 680px;
 }
 .userName {

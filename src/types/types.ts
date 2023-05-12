@@ -58,7 +58,7 @@ export type IArticleState = {
 export interface ISubmitForm {
   username: string;
   email: string;
-  pass: string;
+  password: string;
   repeatePass: string;
   checkbox: boolean;
 }

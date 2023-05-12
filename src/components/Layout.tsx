@@ -30,7 +30,11 @@ const Layout: FC = () => {
                 Create Article
               </Link>
             </button>
-            <p>{username}</p>
+            <p>
+              <Link className={style.username} to="/profile">
+                {username}
+              </Link>{' '}
+            </p>
             <div className={style.userImg}>
               <img src={image} alt="userImg" />
             </div>

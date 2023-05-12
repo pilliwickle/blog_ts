@@ -44,12 +44,14 @@
   margin-right: 12px;
 }
 
-.name_img {
-  display: flex;
-}
 
 .logoutBtn {
   padding: 10px 16px;
   border: 1px solid $black;
   border-radius: 5px;
+}
+.username {
+  color: $black;
+  font-size: 18px;
+  line-height: 28px;
 }

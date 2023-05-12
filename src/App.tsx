@@ -3,9 +3,13 @@ import { Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import './App.css';
 import { HomePage } from './pages/HomePage/HomePage';
-import { RegPage } from './pages/RegPage/RegPage';
+import { RegPage } from './pages/AuthPage/AuthPage';
 import { ArticlePage } from './pages/ArticlePage/ArticlePage';
 import { SignInPage } from './pages/SignInPage/SignInPage';
+import { EditArticlePage } from './pages/EditArticlePage/EditArticlePage';
+import { EditProfile } from './pages/EditProfilePage/EditProfile';
+import { RequireAuth } from './RequireAuth/RequireAuth';
+import { CreateArticlePage } from './pages/Create Article/CreateArticlePage';
 
 function App() {
   return (
@@ -16,6 +20,30 @@ function App() {
           <Route path="/:slug" element={<ArticlePage />} />
           <Route path="/sign-up" element={<RegPage />} />
           <Route path="/sign-in" element={<SignInPage />} />
+          <Route
+            path="/create-article"
+            element={
+              <RequireAuth>
+                <CreateArticlePage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/edit-article"
+            element={
+              <RequireAuth>
+                <EditArticlePage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <RequireAuth>
+                <EditProfile />
+              </RequireAuth>
+            }
+          />
         </Route>
       </Routes>
     </div>
