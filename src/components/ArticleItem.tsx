@@ -35,20 +35,16 @@ const ArticleItem = ({
           <p className={style.favoritesCount}>{favoritesCount}</p>
         </div>
         <p className={style.articlesTags}>
-          {tagList.map(
-            (t) =>
-              t.length &&
-              t !== ' ' && (
-                <span key={cuid()} className={style.tags}>
-                  {`${textCut(t, 15)}`}
-                </span>
-              )
-          )}
+          {tagList.map((t, i) => {
+            const key = `${t}-${i}`;
+            return (
+              <span key={key} className={style.tags}>
+                {`${textCut(t, 15)}`}
+              </span>
+            );
+          })}
         </p>
-        <ReactMarkdown className={style.description}>{`${textCut(
-          description,
-          200
-        )}...`}</ReactMarkdown>
+        <p className={style.description}>{`${textCut(description, 200)}...`}</p>
       </div>
       <div className={style.userInfo}>
         <div>

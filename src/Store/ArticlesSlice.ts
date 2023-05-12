@@ -1,31 +1,5 @@
 import { createSlice, PayloadAction, createAsyncThunk, AnyAction } from '@reduxjs/toolkit';
-
-type IAuthor = {
-  username: string;
-  bio: string;
-  image: string;
-  following: boolean;
-};
-
-type IArticles = {
-  slug: string;
-  title: string;
-  description: string;
-  body: string;
-  tagList: string[];
-  author: IAuthor;
-  createdAt: string;
-  favorited: boolean;
-  favoritesCount: number;
-};
-
-type IArticlesState = {
-  articles: IArticles[];
-  articlesCount: number;
-  loading: boolean;
-  error: string | null;
-  currentPage: number;
-};
+import { IArticlesState, IArticles } from '../types/types';
 
 const initialState: IArticlesState = {
   articles: [],
@@ -68,6 +42,7 @@ const slice = createSlice({
   reducers: {
     changePage(state, action: PayloadAction<number>) {
       state.currentPage = action.payload;
+      localStorage.clear();
     },
   },
   extraReducers: (builder) => {

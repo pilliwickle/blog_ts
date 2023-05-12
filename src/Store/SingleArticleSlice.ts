@@ -1,30 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
-type IAuthor = {
-  username: string;
-  bio: string;
-  image: string;
-  following: boolean;
-};
-
-type IArticle = {
-  slug: string;
-  title: string;
-  description: string;
-  body: string;
-  tagList: string[];
-  createdAt: string;
-  updatedAt: string;
-  favorited: boolean;
-  favoritesCount: number;
-  author: IAuthor;
-};
-
-type IArticleState = {
-  article: IArticle;
-  loading: boolean;
-  error: string | null;
-};
+import { IArticleState, IArticle } from '../types/types';
 
 const initialState: IArticleState = {
   article: {

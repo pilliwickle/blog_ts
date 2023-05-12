@@ -2,11 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import Reducer from './ArticlesSlice';
 import ArtReducer from './SingleArticleSlice';
+import SignUpReducer from './AuthSlice';
 
 const store = configureStore({
   reducer: {
     articles: Reducer,
     article: ArtReducer,
+    reg: SignUpReducer,
   },
 });
 export default store;

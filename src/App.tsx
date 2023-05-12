@@ -3,9 +3,9 @@ import { Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import './App.css';
 import { HomePage } from './pages/HomePage/HomePage';
-import { AuthPage } from './pages/AuthPage/AuthPage';
+import { RegPage } from './pages/RegPage/RegPage';
 import { ArticlePage } from './pages/ArticlePage/ArticlePage';
-import { SignIn } from './pages/SignInPage/SignIn';
+import { SignInPage } from './pages/SignInPage/SignInPage';
 
 function App() {
   return (
@@ -14,8 +14,8 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="/:slug" element={<ArticlePage />} />
-          <Route path="/auth" element={<AuthPage />} />
-          <Route path="/sign" element={<SignIn />} />
+          <Route path="/sign-up" element={<RegPage />} />
+          <Route path="/sign-in" element={<SignInPage />} />
         </Route>
       </Routes>
     </div>

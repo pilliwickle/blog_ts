@@ -36,9 +36,10 @@ const HomePage: FC = () => {
       <div className={style.pagination}>
         <Pagination
           defaultCurrent={1}
-          total={articlesCount / 5}
+          total={articlesCount}
           current={currentPage}
-          onChange={dispatch(changePage)}
+          onChange={(p) => dispatch(changePage(p))}
+          pageSize={5}
         />
       </div>
     </div>

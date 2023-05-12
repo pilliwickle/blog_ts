@@ -12,6 +12,10 @@
   line-height: 28px;
   color: $black;
 }
+.sign_in {
+  color: $black;
+}
+
 .panel {
   display: flex;
   column-gap: 19px;
@@ -25,4 +29,27 @@
 .footer {
   text-align: center;
   padding: 12px;
+}
+.userImg > img {
+  width: 46px;
+  height: 46px;
+  margin-left: 12px;
+  border-radius: 50%;
+}
+
+.userPanel {
+  display: flex;
+  align-items: center;
+  column-gap: 26px;
+  margin-right: 12px;
+}
+
+.name_img {
+  display: flex;
+}
+
+.logoutBtn {
+  padding: 10px 16px;
+  border: 1px solid $black;
+  border-radius: 5px;
 }
