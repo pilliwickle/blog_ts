@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 
-import { Layout } from './components/Layout';
+import { Layout } from './components/Layout/Layout';
 import './App.css';
 import { HomePage } from './pages/HomePage/HomePage';
 import { RegPage } from './pages/AuthPage/AuthPage';
 import { ArticlePage } from './pages/ArticlePage/ArticlePage';
-import { SignInPage } from './pages/SignInPage/SignInPage';
+import { SignInPage } from './pages/Login Page/LoginPage';
 import { EditArticlePage } from './pages/EditArticlePage/EditArticlePage';
 import { EditProfile } from './pages/EditProfilePage/EditProfile';
 import { RequireAuth } from './RequireAuth/RequireAuth';

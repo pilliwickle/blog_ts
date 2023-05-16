@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
-import { textCut } from '../utils/text';
-import { IArticleIItem } from '../types/types';
+import { textCut } from '../../utils/text';
+import { IArticleIItem } from './types';
 import style from './ArticleItem.module.scss';
 import logo from './heartoutline.png';
 

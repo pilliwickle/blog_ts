@@ -1,4 +1,4 @@
-@import '../color/color.module.scss';
+@import '../../color/color.module.scss';
 
 .articlesItem {
   display: flex;
@@ -45,8 +45,7 @@
 .description {
   @include break;
 }
-.userName {
-}
+
 .userDate {
   font-size: 12px;
   line-height: 22px;

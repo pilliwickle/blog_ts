@@ -6,7 +6,7 @@ import { IEditProfileRequest, ISubmitEditForm } from './types';
 import { useAppDispatch, useAppSelector } from '../../Store/customHooks';
 
 import style from './EditProfile.module.scss';
-import { editProfile } from '../../Store/EditSlice';
+import { editProfile } from '../../Store/Reducers/EditSlice';
 
 const EditProfile: FC = () => {
   const dispatch = useAppDispatch();

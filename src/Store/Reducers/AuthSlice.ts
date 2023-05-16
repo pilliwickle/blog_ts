@@ -1,5 +1,6 @@
 import { AnyAction, createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ILogin, ISignUpRequest } from '../model/signup';
+import { ILogin } from '../../pages/Login Page/types';
+import { IAuthRequest } from '../../pages/AuthPage/types';
 
 export interface IResponse {
   username: string;
@@ -34,7 +35,7 @@ const isError = (action: AnyAction) => {
   return action.type.endsWith('rejected');
 };
 
-export const registration = createAsyncThunk<IResponse, ISignUpRequest, { rejectValue: string }>(
+export const registration = createAsyncThunk<IResponse, IAuthRequest, { rejectValue: string }>(
   'reg/registration',
   async function (regInfo, { rejectWithValue }) {
     const response = await fetch('https://blog.kata.academy/api/users', {

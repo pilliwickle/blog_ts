@@ -5,17 +5,6 @@ interface IAuthor {
   following: boolean;
 }
 
-export interface IArticleIItem {
-  slug: string;
-  body: string;
-  tagList: string[];
-  title: string;
-  description: string;
-  createdAt: string;
-  author: IAuthor;
-  favoritesCount: number;
-}
-
 export type IArticles = {
   slug: string;
   title: string;
@@ -54,15 +43,3 @@ export type IArticleState = {
   loading: boolean;
   error: string | null;
 };
-
-export interface ISubmitForm {
-  username: string;
-  email: string;
-  password: string;
-  repeatePass: string;
-  checkbox: boolean;
-}
-export interface ILoginForm {
-  email: string;
-  password: string;
-}

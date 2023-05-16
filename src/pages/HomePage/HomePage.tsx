@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react';
 
-import { ArticlesList } from '../../components/ArticlesList';
-import { fetchArticles, fetchArticlesCount, changePage } from '../../Store/ArticlesSlice';
+import { ArticlesList } from '../../components/Article List/ArticlesList';
+import { fetchArticles, fetchArticlesCount, changePage } from '../../Store/Reducers/ArticlesSlice';
 import { useAppDispatch, useAppSelector } from '../../Store/customHooks';
 import { Alert, Pagination, Space, Spin } from 'antd';
 

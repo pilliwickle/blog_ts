@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import Reducer from './ArticlesSlice';
-import ArtReducer from './SingleArticleSlice';
-import SignUpReducer from './AuthSlice';
-import EditReducer from './EditSlice';
+import Reducer from './Reducers/ArticlesSlice';
+import ArtReducer from './Reducers/SingleArticleSlice';
+import SignUpReducer from './Reducers/AuthSlice';
+import EditReducer from './Reducers/EditSlice';
 
 const store = configureStore({
   reducer: {

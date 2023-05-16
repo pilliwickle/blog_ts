@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import { useParams } from 'react-router-dom';
 import cuid from 'cuid';
 
-import { fetchSingleArticle } from '../../Store/SingleArticleSlice';
+import { fetchSingleArticle } from '../../Store/Reducers/SingleArticleSlice';
 import { useAppDispatch, useAppSelector } from '../../Store/customHooks';
 import { textCut } from '../../utils/text';
 import style from './ArticlePage.module.scss';

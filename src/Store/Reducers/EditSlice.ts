@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { IEditProfileRequest } from '../pages/EditProfilePage/types';
+import { IEditProfileRequest } from '../../pages/EditProfilePage/types';
 
 interface IResponse {
   username: string;

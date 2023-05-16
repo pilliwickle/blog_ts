@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
-import { useAppSelector } from '../Store/customHooks';
+import { useAppSelector } from '../../Store/customHooks';
 
-import { ArticleItem } from './ArticleItem';
+import { ArticleItem } from '../Article Item/ArticleItem';
 import style from './ArticlesList.module.scss';
 
 const ArticlesList: FC = () => {

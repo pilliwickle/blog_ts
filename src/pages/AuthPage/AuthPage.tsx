@@ -1,11 +1,10 @@
 import { FC } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import style from './AuthPage.module.scss';
-import { ISubmitForm } from '../../types/types';
-import { ISignUpRequest } from '../../model/signup';
+import { IAuthRequest, ISubmitForm } from './types';
 import { useAppDispatch } from '../../Store/customHooks';
-import { registration } from '../../Store/AuthSlice';
+import { registration } from '../../Store/Reducers/AuthSlice';
+import style from './AuthPage.module.scss';
 
 const RegPage: FC = () => {
   const dispatch = useAppDispatch();
@@ -25,7 +24,7 @@ const RegPage: FC = () => {
   });
 
   const onSubmit: SubmitHandler<ISubmitForm> = (data: ISubmitForm) => {
-    const requestData: ISignUpRequest = {
+    const requestData: IAuthRequest = {
       user: {
         username: data.username,
         email: data.email,

@@ -1,11 +1,10 @@
 import { FC } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import style from './SignInPage.module.scss';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { ILoginForm } from '../../types/types';
-import { ILogin } from '../../model/signup';
+import { ILoginForm, ILogin } from './types';
 import { useAppDispatch } from '../../Store/customHooks';
-import { login } from '../../Store/AuthSlice';
+import { login } from '../../Store/Reducers/AuthSlice';
+import style from './LoginPage.module.scss';
 
 const SignInPage: FC = () => {
   const dispatch = useAppDispatch();
