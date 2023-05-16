@@ -13,8 +13,6 @@ const EditProfile: FC = () => {
   const { username, email } = useAppSelector((state) => state.reg.data);
 
   const navigate = useNavigate();
-  const location = useLocation();
-  const fromPage = location.state?.from?.pathname || '/';
   const {
     register,
     formState: { errors, isValid },
@@ -38,7 +36,7 @@ const EditProfile: FC = () => {
     };
     reset();
     dispatch(editProfile(requestData));
-    navigate(fromPage, { replace: true });
+    navigate('/', { replace: true });
   };
 
   return (

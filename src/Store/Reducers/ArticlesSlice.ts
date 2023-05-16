@@ -42,7 +42,6 @@ const slice = createSlice({
   reducers: {
     changePage(state, action: PayloadAction<number>) {
       state.currentPage = action.payload;
-      localStorage.clear();
     },
   },
   extraReducers: (builder) => {

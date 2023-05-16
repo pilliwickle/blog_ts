@@ -10,8 +10,6 @@ const RegPage: FC = () => {
   const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
-  const location = useLocation();
-  const fromPage = location.state?.from?.pathname || '/';
 
   const {
     register,
@@ -33,7 +31,7 @@ const RegPage: FC = () => {
     };
     reset();
     dispatch(registration(requestData));
-    navigate(fromPage, { replace: true });
+    navigate('/', { replace: true });
   };
 
   return (

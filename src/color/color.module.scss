@@ -21,3 +21,16 @@ $red: #f5222d;
   font-size: 20px;
   line-height: 28px;
 }
+@mixin input {
+  margin-top: 2px;
+  padding: 12px 8px;
+  border: 1px solid $lightgrey;
+  border-radius: 4px;
+}
+
+@mixin submit {
+  height: 40px;
+  color: $white;
+  background-color: $blue;
+  border-radius: 4px;
+}

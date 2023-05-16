@@ -1,0 +1,80 @@
+@import '../../color/color.module.scss';
+
+.CreateArticle {
+  height: 100%;
+  &_card {
+    text-align: center;
+    min-height: 700px;
+    padding: 40px 32px 0 32px;
+    width: 938px;
+    margin: 30px auto 0 auto;
+    background-color: $white;
+    box-shadow: 0px 22px 106px rgba(0, 0, 0, 0.07), 0px 9.19107px 44.2843px rgba(0, 0, 0, 0.0503198),
+      0px 4.91399px 23.6765px rgba(0, 0, 0, 0.0417275), 0px 2.75474px 13.2728px rgba(0, 0, 0, 0.035),
+      0px 1.46302px 7.04911px rgba(0, 0, 0, 0.0282725),
+      0px 0.608796px 2.93329px rgba(0, 0, 0, 0.0196802);
+    border-radius: 6px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  &_title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 20px;
+  }
+  &_label {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    margin-bottom: 20px;
+    &__tags {
+      text-align: start;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  &_input {
+    @include input;
+    &__tags {
+      @include input;
+      width: 300px;
+    }
+  }
+  &_textarea {
+    @include input;
+    height: 170px;
+  }
+  &_submit {
+    width: 319px;
+    @include submit;
+    margin-right: auto;
+  }
+}
+
+.tags_form {
+  display: flex;
+  column-gap: 17px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.btn_delete {
+  color: $red;
+  border: 1px solid $red;
+  border-radius: 4px;
+  padding: 8px 16px;
+  width: 118px;
+  height: 40px;
+}
+
+.btn_add {
+  color: $blue;
+  border: 1px solid $blue;
+  border-radius: 4px;
+  padding: 8px 16px;
+  width: 118px;
+}

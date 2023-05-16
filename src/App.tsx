@@ -6,10 +6,10 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { RegPage } from './pages/AuthPage/AuthPage';
 import { ArticlePage } from './pages/ArticlePage/ArticlePage';
 import { SignInPage } from './pages/Login Page/LoginPage';
-import { EditArticlePage } from './pages/EditArticlePage/EditArticlePage';
+import { EditArticle } from './pages/Edit Article/EditArticle';
 import { EditProfile } from './pages/EditProfilePage/EditProfile';
 import { RequireAuth } from './RequireAuth/RequireAuth';
-import { CreateArticlePage } from './pages/Create Article/CreateArticlePage';
+import { CreateArticle } from './pages/Create Article/CreateArticle';
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
             path="/create-article"
             element={
               <RequireAuth>
-                <CreateArticlePage />
+                <CreateArticle />
               </RequireAuth>
             }
           />
@@ -32,7 +32,7 @@ function App() {
             path="/edit-article"
             element={
               <RequireAuth>
-                <EditArticlePage />
+                <EditArticle />
               </RequireAuth>
             }
           />

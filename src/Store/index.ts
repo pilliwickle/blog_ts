@@ -4,6 +4,7 @@ import Reducer from './Reducers/ArticlesSlice';
 import ArtReducer from './Reducers/SingleArticleSlice';
 import SignUpReducer from './Reducers/AuthSlice';
 import EditReducer from './Reducers/EditSlice';
+import CreateReducer from './Reducers/CreateSlice';
 
 const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
     article: ArtReducer,
     reg: SignUpReducer,
     edit: EditReducer,
+    create: CreateReducer,
   },
 });
 export default store;
