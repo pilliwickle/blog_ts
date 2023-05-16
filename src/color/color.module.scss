@@ -34,3 +34,42 @@ $red: #f5222d;
   background-color: $blue;
   border-radius: 4px;
 }
+@mixin btnApp {
+  border-radius: 4px;
+  padding: 8px 16px;
+  height: 40px;
+}
+
+@mixin btnHeader {
+  border-radius: 5px;
+  padding: 8px 16px;
+  height: 50px;
+}
+
+@mixin userImg {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  margin-left: 12px;
+}
+
+@mixin fs14-lh22 {
+  font-size: 14px;
+  line-height: 22px;
+}
+
+@mixin fs18-lh28 {
+  font-size: 18px;
+  line-height: 28px;
+}
+
+@mixin fs20-lh28-w500 {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+@mixin error-msg {
+  color: $red;
+  @include fs14-lh22;
+}

@@ -5,7 +5,6 @@ interface IResponse {
   description: string;
   body: string;
   tagList: string[];
-  token: string;
 }
 
 interface IRequest {
@@ -14,7 +13,6 @@ interface IRequest {
     description: string;
     body: string;
     tagList: string[];
-    token: string;
   };
 }
 
@@ -24,22 +22,20 @@ const initialState: IRequest = {
     description: '',
     body: '',
     tagList: [],
-    token: '',
   },
 };
 
 export const createArticle = createAsyncThunk<IResponse, IRequest, { rejectValue: string }>(
   'create/createArticle',
   async function (dataArticle, { rejectWithValue }) {
-    const { article } = dataArticle;
-    const { token, ...info } = article;
+    const token = localStorage.getItem('token');
     const response = await fetch('https://blog.kata.academy/api/articles', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
         Authorization: `Token ${token}`,
       },
-      body: JSON.stringify({ article: info }),
+      body: JSON.stringify(dataArticle),
     });
 
     if (!response.ok) {

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IAuthRequest, ISubmitForm } from './types';
 import { useAppDispatch } from '../../Store/customHooks';
@@ -35,11 +35,11 @@ const RegPage: FC = () => {
   };
 
   return (
-    <div className={style.RegPage}>
-      <div className={style.regForm}>
-        <h2 className={style.formTitle}>Create new account</h2>
-        <form onSubmit={handleSubmit(onSubmit)} className={style.form}>
-          <label className={style.inputBlock}>
+    <div className={style.AuthPage}>
+      <div className={style.AuthForm}>
+        <h2 className={style.AuthForm_title}>Create new account</h2>
+        <form onSubmit={handleSubmit(onSubmit)} className={style.input_form}>
+          <label className={style.input_block}>
             Username
             <input
               {...register('username', {
@@ -62,7 +62,7 @@ const RegPage: FC = () => {
             />
           </label>
           {errors.username && <p className={style.error}>{errors.username.message}</p>}
-          <label className={style.inputBlock}>
+          <label className={style.input_block}>
             Email address
             <input
               {...register('email', {
@@ -79,7 +79,7 @@ const RegPage: FC = () => {
             />
           </label>
           {errors.email && <p className={style.error}>{errors.email.message} </p>}
-          <label className={style.inputBlock}>
+          <label className={style.input_block}>
             Password
             <input
               {...register('password', {
@@ -99,7 +99,7 @@ const RegPage: FC = () => {
             />
           </label>
           {errors.password && <p className={style.error}>{errors.password.message}</p>}
-          <label className={style.inputBlock}>
+          <label className={style.input_block}>
             Repeate password
             <input
               {...register('repeatePass', {
@@ -118,13 +118,13 @@ const RegPage: FC = () => {
             <p className={style.error}>Passwords must mutch!</p>
           )}
           {errors.repeatePass && <p className={style.error}>{errors.repeatePass.message}</p>}
-          <label className={style.check}>
+          <label className={style.input_block__checkbox}>
             <input
               {...register('checkbox', {
                 required: 'Required field',
               })}
               type="checkbox"
-              className={style.checkBox}
+              className={style.input_checkbox}
             />
             I agree to the processing of my personal information
           </label>
@@ -133,7 +133,7 @@ const RegPage: FC = () => {
             <input type="submit" value="Create" disabled={!isValid} />
           </button>
         </form>
-        <div className={style.formFooter}>
+        <div className={style.AuthForm_footer}>
           Already have an account?{' '}
           <Link to="/sign-in">
             <p className={style.redirect}>Sign In.</p>

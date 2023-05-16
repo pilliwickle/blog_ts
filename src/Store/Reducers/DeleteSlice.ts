@@ -1,19 +1,19 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
-export interface IProps {
-  token: string;
-  slug: string;
-}
+import { createSlice, createAsyncThunk, AnyAction, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState = {
-  token: '',
   slug: '',
+  loading: false,
+  error: '',
 };
 
-export const deleteArticle = createAsyncThunk<string, IProps, { rejectValue: string }>(
+const isError = (action: AnyAction) => {
+  return action.type.endsWith('rejected');
+};
+
+export const deleteArticle = createAsyncThunk<string, string, { rejectValue: string }>(
   'delete/deleteArticle',
-  async function (data, { rejectWithValue }) {
-    const { token, slug } = data;
+  async function (slug, { rejectWithValue }) {
+    const token = localStorage.getItem('token');
     const response = await fetch(`https://blog.kata.academy/api/articles/${slug}`, {
       method: 'DELETE',
       headers: {
@@ -34,10 +34,14 @@ const slice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(deleteArticle.fulfilled, (state, action) => {
-      state.slug = action.payload;
-      state.token = action.payload;
-    });
+    builder
+      .addCase(deleteArticle.fulfilled, (state, action) => {
+        state.slug = action.payload;
+      })
+      .addMatcher(isError, (state, action: PayloadAction<string>) => {
+        state.error = action.payload;
+        state.loading = false;
+      });
   },
 });
 

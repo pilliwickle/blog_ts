@@ -17,7 +17,6 @@ const CreateArticle: FC = () => {
     tagList: {
       name: string;
     }[];
-    token: string;
   }
 
   const {
@@ -46,14 +45,12 @@ const CreateArticle: FC = () => {
   };
 
   const onSubmit: SubmitHandler<ISubmitForm> = (data: ISubmitForm) => {
-    const myToken = localStorage.getItem('token');
     const requestData = {
       article: {
         title: data.title,
         description: data.description,
         body: data.text,
-        tagList: getTags(fields),
-        token: myToken!,
+        tagList: getTags(data.tagList),
       },
     };
     reset();
@@ -101,14 +98,21 @@ const CreateArticle: FC = () => {
           </label>
           {errors.text && <p className={style.error}>{errors.text.message}</p>}
           <label className={style.form_label__tags}>
-            <div className={style.tags_form}>
+            <div className={style.newTags_form}>
               {fields.length >= 1 && <p>Tags</p>}
               {fields.map((tag, i) => {
                 return (
                   <div key={tag.id} className={style.newTags}>
                     <input
-                      {...register(`tagList.${i}.name`, { required: true })}
+                      {...register(`tagList.${i}.name`, {
+                        required: 'Required field',
+                        minLength: {
+                          value: 3,
+                          message: 'Your username needs to be at least 3 characters',
+                        },
+                      })}
                       type="text"
+                      placeholder="Tags"
                       className={style.form_input}
                     />
                     <button type="button" className={style.btn_delete} onClick={() => remove(i)}>

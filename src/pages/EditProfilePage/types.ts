@@ -11,6 +11,5 @@ export interface IEditProfileRequest {
     email: string;
     password: string;
     image: string;
-    token: string;
   };
 }

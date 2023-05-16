@@ -1,6 +1,6 @@
 @import '../../color/color.module.scss';
 
-.articlesItem {
+.articleCard {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -9,50 +9,46 @@
   padding: 16px;
   margin: 26px 0;
 }
-.title {
-  margin: 0 15px 10px 0;
-  @include title;
-  @include break;
-}
-
-.title_like {
+.card_title{
   display: flex;
   align-items: baseline;
   width: 640px;
+  &__title {
+    margin: 0 15px 10px 0;
+    max-width: 570px;
+    @include title;
+    @include break;
+  }
+  &__like {
+    cursor: pointer;
+    position: relative;
+    top: 2px;
+  }
+  &__likeCount {
+    margin-left: 5px;
+  }
 }
 
-.like_img {
-  cursor: pointer;
-  position: relative;
-  top: 2px;
-}
-
-.favoritesCount {
-  margin-left: 5px;
-}
-.articlesTags {
+.articleTags {
   margin-bottom: 8px;
 }
-.tags {
+.tag {
   padding: 3px 5px;
   margin-right: 8px;
   border: 2px solid #000;
   border-radius: 5px;
 }
-.userInfo {
-  display: flex;
-}
+
 .description {
   @include break;
 }
 
-.userDate {
-  font-size: 12px;
-  line-height: 22px;
-}
-.userImg > img {
-  width: 46px;
-  height: 46px;
-  margin-left: 12px;
-  border-radius: 50%;
+.userInfo {
+  display: flex;
+  &_date {
+    @include fs14-lh22;
+  }
+  &_img > img {
+    @include userImg;
+  }
 }

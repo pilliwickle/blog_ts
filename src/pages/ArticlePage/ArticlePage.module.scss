@@ -1,6 +1,6 @@
 @import '../../color/color.module.scss';
 
-.articlesItem {
+.articleCard{
   display: flex;
   justify-content: space-between;
   width: 940px;
@@ -9,63 +9,61 @@
   padding: 16px;
   margin: 26px auto;
 }
-.title_like {
-  display: flex;
-  align-items: center;
-  width: 640px;
+.card {
+  &_info {
+    width: 700px;
+    &__description {
+      margin-top: 16px;
+      @include break;
+      @include description;
+    }
+    &__body {
+      margin-top: 25px;
+      color: $black;
+      @include break;
+      width: 680px;
+    }
+  }
+  &_title {
+    display: flex;
+    align-items: center;
+    width: 640px;
+    &__title {
+      margin: 0 13px 5px 0;
+      max-width: 570px;
+      @include title;
+      @include break;
+    }
+    &__likeCount {
+      margin-left: 5px;
+    }
+  }
 }
-.favoritesCount {
-  margin-left: 5px;
-}
-.title {
-  margin: 0 13px 5px 0;
-  @include title;
-  @include break;
-}
-.artInfo {
-  width: 700px;
-}
-.articlesTags {
+.articleTags {
   margin-bottom: 8px;
 }
-.tags {
+.tag {
   color: $grey;
   padding: 3px 5px;
   margin-right: 8px;
   border: 2px solid $grey;
   border-radius: 5px;
 }
-.userInfo {
-  display: flex;
-}
-.description {
-  margin-top: 16px;
-  @include break;
-  @include description;
-}
-.articleBody {
-  margin-top: 25px;
-  color: $black;
-  @include break;
-  width: 680px;
-}
-.userName {
-}
-.userDate {
-  font-size: 12px;
-  line-height: 22px;
-  color: $grey;
-}
-.userImg > img {
-  width: 46px;
-  height: 46px;
-  margin-left: 12px;
-  border-radius: 50%;
-}
+
 .userPanel {
   display: flex;
   flex-direction: column;
   row-gap: 30px;
+}
+.userInfo {
+  display: flex;
+  &_date {
+    @include fs14-lh22;
+    color: $grey;
+  }
+  &_img > img {
+    @include userImg;
+  }
 }
 
 .btns {
@@ -73,18 +71,24 @@
   column-gap: 12px;
   &_delete {
     color: $red;
-    border: 1px solid $red;
-    border-radius: 4px;
-    padding: 8px 16px;
     width: 78px;
-    height: 40px;
+    border: 1px solid $red;
+    @include btnApp;
   }
   &_edit {
     color: $green;
-    border: 1px solid $green;
-    border-radius: 4px;
-    padding: 8px 16px;
     width: 65px;
-    height: 40px;
+    border: 1px solid $green;
+    @include btnApp;
   }
+}
+.div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.spin {
+  margin: 0 auto;
+  padding: 100px;
 }

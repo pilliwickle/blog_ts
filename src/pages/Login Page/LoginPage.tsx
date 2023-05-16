@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ILoginForm, ILogin } from './types';
 import { useAppDispatch } from '../../Store/customHooks';
@@ -32,11 +32,11 @@ const SignInPage: FC = () => {
   };
 
   return (
-    <div className={style.SignInPage}>
-      <div className={style.regForm}>
-        <h2 className={style.formTitle}>Sign in</h2>
-        <form onChange={handleSubmit(onSubmit)} className={style.form}>
-          <label className={style.inputBlock}>
+    <div className={style.LoginPage}>
+      <div className={style.LoginPage_form}>
+        <h2 className={style.LoginPage_title}>Sign in</h2>
+        <form onSubmit={handleSubmit(onSubmit)} className={style.input_form}>
+          <label className={style.input_block}>
             Email address
             <input
               {...register('email', {
@@ -53,7 +53,7 @@ const SignInPage: FC = () => {
             />
           </label>
           {errors.email && <p className={style.error}>{errors.email.message} </p>}
-          <label className={style.inputBlock}>
+          <label className={style.input_block}>
             Password
             <input
               {...register('password', {
@@ -73,11 +73,11 @@ const SignInPage: FC = () => {
             />
           </label>
           {errors.password && <p className={style.error}>{errors.password.message}</p>}
-          <button className={style.formBtn}>
+          <button className={style.LoginPage_btn}>
             <input type="submit" value="Login" disabled={!isValid} />
           </button>
         </form>
-        <div className={style.formFooter}>
+        <div className={style.LoginPage_footer}>
           Don`t have an account?{' '}
           <Link to="/sign-in">
             <p className={style.redirect}>Sign Up.</p>

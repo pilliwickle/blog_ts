@@ -3,29 +3,37 @@ import ReactMarkdown from 'react-markdown';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import cuid from 'cuid';
 
-import { fetchSingleArticle } from '../../Store/Reducers/SingleArticleSlice';
+import { deleteLike, fetchSingleArticle, setLike } from '../../Store/Reducers/SingleArticleSlice';
 import { useAppDispatch, useAppSelector } from '../../Store/customHooks';
 import { textCut } from '../../utils/text';
 import style from './ArticlePage.module.scss';
-import logo from './heartoutline.png';
+import nonlike from '../../img/heart 1.png';
+import like from '../../img/heart 2.png';
 import { deleteArticle } from '../../Store/Reducers/DeleteSlice';
-import { message, Popconfirm } from 'antd';
+import { Alert, message, Popconfirm, Space, Spin } from 'antd';
 
 const ArticlePage: FC = () => {
   const { slug } = useParams();
   const dispatch = useAppDispatch();
   const { loading, error } = useAppSelector((state) => state.article);
-  const { createdAt, author, tagList, title, body, description, favoritesCount } = useAppSelector(
-    (state) => state.article.article
-  );
-  const { token } = useAppSelector((state) => state.reg.data);
+  const { createdAt, author, tagList, title, body, description, favoritesCount, favorited } =
+    useAppSelector((state) => state.article.article);
   const navigate = useNavigate();
 
   const onClick = () => {
-    if (slug !== undefined && token !== null) {
-      dispatch(deleteArticle({ slug, token }));
+    if (slug) {
+      dispatch(deleteArticle(slug));
     }
     navigate('/', { replace: true });
+  };
+  const handleClick = () => {
+    if (slug) {
+      dispatch(setLike(slug));
+    }
+
+    if (favorited && slug) {
+      dispatch(deleteLike(slug));
+    }
   };
   const { username } = useAppSelector((state) => state.reg.data);
 
@@ -42,69 +50,80 @@ const ArticlePage: FC = () => {
     }
   }, [dispatch, slug]);
 
-  const confirm = () => {
-    message.success('Click on Yes');
-  };
-
   const cancel = () => {
     message.error('Click on No');
   };
 
   return (
-    <div className={style.articlesItem}>
-      {error && <h2>An error occured: {error}</h2>}
-      {loading && <h2>Loading...</h2>}
-      <div className={style.artInfo}>
-        <div className={style.title_like}>
-          <p className={style.title}>{title}</p>
-          <img src={logo} alt="heartoutline" />
-          <p className={style.favoritesCount}>{favoritesCount}</p>
+    <div className={style.div}>
+      {error && (
+        <Space direction="vertical" style={{ width: '100%' }}>
+          <Alert message={error} type="error" />
+        </Space>
+      )}
+      {loading && (
+        <div className={style.spin}>
+          <Space size="large">
+            <Spin size="large" />
+          </Space>
         </div>
-        <p className={style.articlesTags}>
-          {tagList.map(
-            (t) =>
-              t.length &&
-              t !== ' ' && (
-                <span key={cuid()} className={style.tags}>
-                  {`${textCut(t, 15)}`}
-                </span>
-              )
-          )}
-        </p>
-        <p className={style.description}>{description}</p>
-        <ReactMarkdown className={style.articleBody}>{body}</ReactMarkdown>
-      </div>
-      <div className={style.userPanel}>
-        <div className={style.userInfo}>
-          <div>
-            <p className={style.userName}>{author.username}</p>
-            <p className={style.userDate}>{artDate.format(new Date(createdAt))}</p>
-          </div>
-          <div className={style.userImg}>
-            <img src={author.image} alt="userImg" />
-          </div>
-        </div>
-        {author.username === username && (
-          <div className={style.btns}>
-            <button>
-              <Popconfirm
-                title="Delete the task"
-                description="Are you sure to delete this task?"
-                onConfirm={onClick}
-                onCancel={cancel}
-                okText="Yes"
-                cancelText="No"
-              >
-                <Link className={style.btns_delete} to="/">
-                  Delete
-                </Link>
-              </Popconfirm>
+      )}
+      <div className={style.articleCard}>
+        <div className={style.card_info}>
+          <div className={style.card_title}>
+            <p className={style.card_title__title}>{title}</p>
+            <button onClick={handleClick}>
+              <img src={favorited ? like : nonlike} alt="like" />
             </button>
-            <Link to="/edit-article">
-              <button className={style.btns_edit}>Edit</button>
-            </Link>
+            <p className={style.card_title__likeCount}>{favoritesCount}</p>
           </div>
-        )}
+          <p className={style.articleTags}>
+            {tagList.map(
+              (t) =>
+                t.length &&
+                t !== ' ' && (
+                  <span key={cuid()} className={style.tag}>
+                    {`${textCut(t, 15)}`}
+                  </span>
+                )
+            )}
+          </p>
+          <p className={style.card_info__description}>{description}</p>
+          <ReactMarkdown className={style.card_info__body}>{body}</ReactMarkdown>
+        </div>
+        <div className={style.userPanel}>
+          <div className={style.userInfo}>
+            <div>
+              <p className={style.userInfo_name}>{author.username}</p>
+              <p className={style.userInfo_date}>{artDate.format(new Date(createdAt))}</p>
+            </div>
+            <div className={style.userInfo_img}>
+              <img src={author.image} alt="userImg" />
+            </div>
+          </div>
+
+          {author.username === username && (
+            <div className={style.btns}>
+              <button>
+                <Popconfirm
+                  title="Delete the task"
+                  description="Are you sure to delete this article?"
+                  onConfirm={onClick}
+                  onCancel={cancel}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                  <Link className={style.btns_delete} to="/">
+                    Delete
+                  </Link>
+                </Popconfirm>
+              </button>
+              <Link to="/edit-article">
+                <button className={style.btns_edit}>Edit</button>
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

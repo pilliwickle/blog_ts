@@ -5,53 +5,52 @@
   justify-content: space-between;
   padding: 16px 22px;
   background-color: $white;
+  margin: auto 0;
+  &_logo {
+    display: flex;
+    align-items: center;
+    font-family: inherit;
+    @include fs18-lh28;
+    color: $black;
+  }
+  &_panel {
+    display: flex;
+    column-gap: 19px;
+  }
 }
-.logo {
-  font-family: inherit;
-  font-size: 18px;
-  line-height: 28px;
-  color: $black;
-}
-.sign_in {
-  color: $black;
+.user {
+  &_panel {
+    display: flex;
+    align-items: center;
+    column-gap: 26px;
+    margin-right: 12px;
+  }
+  &_name {
+    color: $black;
+    @include fs18-lh28;
+  }
+  &_img > img {
+    @include userImg;
+  }
 }
 
-.panel {
-  display: flex;
-  column-gap: 19px;
-  &_btnSignup {
+.btn {
+  &_auth {
+    display: flex;
+    align-items: center;
     color: $green;
     border: 1px solid $green;
-    border-radius: 5px;
-    padding: 6px 18px;
+    @include btnHeader;
+  }
+  &_logout {
+    border: 1px solid $black;
+    @include btnHeader;
+  }
+  &_login {
+    color: $black;
   }
 }
 .footer {
   text-align: center;
   padding: 12px;
-}
-.userImg > img {
-  width: 46px;
-  height: 46px;
-  margin-left: 12px;
-  border-radius: 50%;
-}
-
-.userPanel {
-  display: flex;
-  align-items: center;
-  column-gap: 26px;
-  margin-right: 12px;
-}
-
-
-.logoutBtn {
-  padding: 10px 16px;
-  border: 1px solid $black;
-  border-radius: 5px;
-}
-.username {
-  color: $black;
-  font-size: 18px;
-  line-height: 28px;
 }

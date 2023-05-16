@@ -21,9 +21,7 @@
   display: flex;
   flex-direction: column;
   &_title {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 28px;
+    @include fs20-lh28-w500;
     margin-bottom: 20px;
   }
   &_label {
@@ -63,18 +61,18 @@
 }
 
 .btn_delete {
-  color: $red;
-  border: 1px solid $red;
-  border-radius: 4px;
-  padding: 8px 16px;
-  width: 118px;
-  height: 40px;
+    .btn {
+        &_delete {
+          color: $red;
+          width: 118px;
+          border: 1px solid $red;
+          @include btnApp;
+        }
+        &_add {
+          color: $blue;
+          width: 118px;
+          border: 1px solid $blue;
+          @include btnApp;
+        }
 }
-
-.btn_add {
-  color: $blue;
-  border: 1px solid $blue;
-  border-radius: 4px;
-  padding: 8px 16px;
-  width: 118px;
 }
