@@ -1,7 +1,10 @@
 .container {
     width: 950px;
     height: 100%;
-    margin: auto;
+    margin: 110px auto 26px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 26px;
   }
   .pagination {
     display: flex;

@@ -1,15 +1,15 @@
 import { Route, Routes } from 'react-router-dom';
 
-import { Layout } from './components/Layout/Layout';
+import Layout from './components/Layout/Layout';
 import './App.css';
-import { HomePage } from './pages/HomePage/HomePage';
-import { RegPage } from './pages/AuthPage/AuthPage';
-import { ArticlePage } from './pages/ArticlePage/ArticlePage';
-import { SignInPage } from './pages/Login Page/LoginPage';
-import { EditArticle } from './pages/Edit Article/EditArticle';
-import { EditProfile } from './pages/EditProfilePage/EditProfile';
-import { RequireAuth } from './RequireAuth/RequireAuth';
-import { CreateArticle } from './pages/Create Article/CreateArticle';
+import HomePage from './pages/HomePage/HomePage';
+import RegPage from './pages/AuthPage/AuthPage';
+import ArticlePage from './pages/ArticlePage/ArticlePage';
+import SignInPage from './pages/LoginPage/LoginPage';
+import EditArticle from './pages/EditArticle/EditArticle';
+import EditProfile from './pages/EditProfilePage/EditProfile';
+import { RequireAuth } from './HOC/RequireAuth';
+import CreateArticle from './pages/CreateArticle/CreateArticle';
 
 function App() {
   return (

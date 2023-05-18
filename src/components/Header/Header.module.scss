@@ -1,11 +1,13 @@
-@import '../../color/color.module.scss';
+@import '../../styles/color.module.scss';
 
 .Header {
   display: flex;
   justify-content: space-between;
+  position: fixed;
   padding: 16px 22px;
   background-color: $white;
   margin: auto 0;
+  width: 100%;
   &_logo {
     display: flex;
     align-items: center;

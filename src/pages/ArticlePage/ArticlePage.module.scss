@@ -1,13 +1,13 @@
-@import '../../color/color.module.scss';
+@import '../../styles/color.module.scss';
 
 .articleCard{
   display: flex;
   justify-content: space-between;
   width: 940px;
-  min-height: 700px;
+  min-height: 650px;
   background-color: $white;
   padding: 16px;
-  margin: 26px auto;
+  margin: 100px auto 20px;
 }
 .card {
   &_info {

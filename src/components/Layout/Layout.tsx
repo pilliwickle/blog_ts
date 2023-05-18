@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Header } from '../Header/Header';
+import Header from '../Header/Header';
 
 import style from './Layout.module.scss';
 
@@ -13,4 +13,4 @@ const Layout: FC = () => {
     </>
   );
 };
-export { Layout };
+export default Layout;

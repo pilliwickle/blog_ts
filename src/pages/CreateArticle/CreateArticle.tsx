@@ -134,4 +134,4 @@ const CreateArticle: FC = () => {
     </div>
   );
 };
-export { CreateArticle };
+export default CreateArticle;

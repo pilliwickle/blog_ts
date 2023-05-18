@@ -1,6 +1,6 @@
 import { AnyAction, createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ILogin } from '../../pages/Login Page/types';
-import { IAuthRequest } from '../../pages/AuthPage/types';
+import { ILogin } from '../../pages/LoginPage/types';
+import { IAuthRequest } from '../../types/auth.interface';
 
 export interface IResponse {
   username: string;

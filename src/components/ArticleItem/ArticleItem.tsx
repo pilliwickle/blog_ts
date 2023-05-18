@@ -1,9 +1,9 @@
 import { textCut } from '../../utils/text';
 import style from './ArticleItem.module.scss';
 import { Link } from 'react-router-dom';
-import nonlike from '../../img/heart 1.png';
-import like from '../../img/heart 2.png';
-import { IArticle } from '../../types/types';
+import nonlike from '../../assets/images/heart_1.png';
+import like from '../../assets/images/heart_2.png';
+import { IArticle } from '../../types/auth.interface';
 import { useAppDispatch } from '../../Store/customHooks';
 import { deleteLike, setLike } from '../../Store/Reducers/SingleArticleSlice';
 import { useState } from 'react';
@@ -82,4 +82,4 @@ const ArticleItem = ({
     </div>
   );
 };
-export { ArticleItem };
+export default ArticleItem;

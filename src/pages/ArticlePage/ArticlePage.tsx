@@ -7,8 +7,8 @@ import { deleteLike, fetchSingleArticle, setLike } from '../../Store/Reducers/Si
 import { useAppDispatch, useAppSelector } from '../../Store/customHooks';
 import { textCut } from '../../utils/text';
 import style from './ArticlePage.module.scss';
-import nonlike from '../../img/heart 1.png';
-import like from '../../img/heart 2.png';
+import nonlike from '../../assets/images/heart_1.png';
+import like from '../../assets/images/heart_2.png';
 import { deleteArticle } from '../../Store/Reducers/DeleteSlice';
 import { Alert, message, Popconfirm, Space, Spin } from 'antd';
 
@@ -129,4 +129,4 @@ const ArticlePage: FC = () => {
   );
 };
 
-export { ArticlePage };
+export default ArticlePage;

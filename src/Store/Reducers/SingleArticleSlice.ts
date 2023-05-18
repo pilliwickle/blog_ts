@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, AnyAction, PayloadAction } from '@reduxjs/toolkit';
-import { IArticleState, IArticle } from '../../types/types';
+import { IArticleState, IArticle } from '../../types/auth.interface';
 
 const initialState: IArticleState = {
   article: {

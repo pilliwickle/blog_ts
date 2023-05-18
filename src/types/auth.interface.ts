@@ -31,3 +31,34 @@ export type IArticleState = {
   loading: boolean;
   error: string | null;
 };
+
+export interface ISignUpRequest {
+  user: {
+    username: string;
+    email: string;
+    password: string;
+  };
+}
+
+export interface ILogin {
+  user: {
+    email: string;
+    password: string;
+  };
+}
+
+export interface ISubmitForm {
+  username: string;
+  email: string;
+  password: string;
+  repeatePass: string;
+  checkbox: boolean;
+}
+
+export interface IAuthRequest {
+  user: {
+    username: string;
+    email: string;
+    password: string;
+  };
+}

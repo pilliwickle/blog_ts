@@ -1,13 +1,14 @@
-@import '../../color/color.module.scss';
+@import '../../styles/color.module.scss';
 
 .CreateArticle {
-  height: 100%;
+  min-height: 770px;
+  padding-top: 110px;
   &_card {
     text-align: center;
     min-height: 700px;
     padding: 40px 32px 0 32px;
     width: 938px;
-    margin: 30px auto 0 auto;
+    margin: 0 auto 0;
     background-color: $white;
     box-shadow: 0px 22px 106px rgba(0, 0, 0, 0.07), 0px 9.19107px 44.2843px rgba(0, 0, 0, 0.0503198),
       0px 4.91399px 23.6765px rgba(0, 0, 0, 0.0417275), 0px 2.75474px 13.2728px rgba(0, 0, 0, 0.035),

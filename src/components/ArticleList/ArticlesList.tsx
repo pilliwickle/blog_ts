@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { useAppSelector } from '../../Store/customHooks';
 
-import { ArticleItem } from '../Article Item/ArticleItem';
+import ArticleItem from '../ArticleItem/ArticleItem';
 import style from './ArticlesList.module.scss';
 
 const ArticlesList: FC = () => {
@@ -16,4 +16,4 @@ const ArticlesList: FC = () => {
     </div>
   );
 };
-export { ArticlesList };
+export default ArticlesList;

@@ -87,4 +87,4 @@ const SignInPage: FC = () => {
     </div>
   );
 };
-export { SignInPage };
+export default SignInPage;

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { IAuthRequest, ISubmitForm } from './types';
+import { IAuthRequest, ISubmitForm } from '../../types/auth.interface';
 import { useAppDispatch } from '../../Store/customHooks';
 import { registration } from '../../Store/Reducers/AuthSlice';
 import style from './AuthPage.module.scss';
@@ -143,4 +143,4 @@ const RegPage: FC = () => {
     </div>
   );
 };
-export { RegPage };
+export default RegPage;

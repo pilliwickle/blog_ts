@@ -145,4 +145,4 @@ const EditArticle: FC = () => {
   );
 };
 
-export { EditArticle };
+export default EditArticle;

@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react';
 
-import { ArticlesList } from '../../components/Article List/ArticlesList';
+import ArticlesList from '../../components/ArticleList/ArticlesList';
 import { fetchArticles, fetchArticlesCount, changePage } from '../../Store/Reducers/ArticlesSlice';
 import { useAppDispatch, useAppSelector } from '../../Store/customHooks';
 import { Alert, Pagination, Space, Spin } from 'antd';
@@ -40,9 +40,10 @@ const HomePage: FC = () => {
           current={currentPage}
           onChange={(p) => dispatch(changePage(p))}
           pageSize={5}
+          showSizeChanger={false}
         />
       </div>
     </div>
   );
 };
-export { HomePage };
+export default HomePage;

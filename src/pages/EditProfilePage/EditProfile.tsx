@@ -128,4 +128,4 @@ const EditProfile: FC = () => {
     </div>
   );
 };
-export { EditProfile };
+export default EditProfile;
