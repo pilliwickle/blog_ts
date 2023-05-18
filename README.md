@@ -1,1 +1,1 @@
-blog-96lgroaan-pilliwickle.vercel.app
+blog-ts-woad.vercel.app
