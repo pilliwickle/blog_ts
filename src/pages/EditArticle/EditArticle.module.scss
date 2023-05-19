@@ -6,7 +6,7 @@
   &_card {
     text-align: center;
     min-height: 700px;
-    padding: 40px 32px 0 32px;
+    padding: 40px 32px 40px 32px;
     width: 938px;
     margin: 0 auto 0;
     background-color: $white;
@@ -31,16 +31,19 @@
     text-align: start;
     margin-bottom: 20px;
     &__tags {
-      text-align: start;
       display: flex;
-      flex-direction: column;
+      align-items: baseline;
+      margin-bottom: 20px;
+      column-gap: 17px;
     }
   }
   &_input {
     @include input;
+    height: 40px;
     &__tags {
       @include input;
       width: 300px;
+      height: 40px;
     }
   }
   &_textarea {
@@ -54,26 +57,34 @@
   }
 }
 
-.tags_form {
+.newTags {
   display: flex;
   column-gap: 17px;
-  align-items: center;
-  margin-bottom: 20px;
+  align-items: baseline;
+  &_form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    text-align: start;
+  }
 }
 
-.btn_delete {
-    .btn {
-        &_delete {
-          color: $red;
-          width: 118px;
-          border: 1px solid $red;
-          @include btnApp;
-        }
-        &_add {
-          color: $blue;
-          width: 118px;
-          border: 1px solid $blue;
-          @include btnApp;
-        }
+.btn {
+  &_delete {
+    color: $red;
+    width: 118px;
+    border: 1px solid $red;
+    @include btnApp;
+  }
+  &_add {
+    color: $blue;
+    border: 1px solid $blue;
+    width: 118px;
+    @include btnApp;
+    align-self: flex-end;
+  }
 }
+
+.error {
+  @include error-msg;
 }

@@ -57,6 +57,7 @@
   margin-left: 2px;
   color: $blue;
 }
+
 .error {
   @include error-msg;
-  }
+}

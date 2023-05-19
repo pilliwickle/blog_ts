@@ -114,7 +114,7 @@ const ArticlePage: FC = () => {
                   okText="Yes"
                   cancelText="No"
                 >
-                  <Link className={style.btns_delete} to="/">
+                  <Link className={style.btns_delete} to={`/${slug}`}>
                     Delete
                   </Link>
                 </Popconfirm>
