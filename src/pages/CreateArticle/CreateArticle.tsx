@@ -60,9 +60,9 @@ const CreateArticle: FC = () => {
   };
 
   return (
-    <div className={style.CreateArticle} onSubmit={handleSubmit(onSubmit)}>
+    <div className={style.CreateArticle}>
       <div className={style.CreateArticle_card}>
-        <form className={style.form}>
+        <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
           <h2 className={style.form_title}>Create new article</h2>
           <label className={style.form_label}>
             Title

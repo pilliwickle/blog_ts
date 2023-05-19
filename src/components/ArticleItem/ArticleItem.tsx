@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import nonlike from '../../assets/images/heart_1.png';
 import like from '../../assets/images/heart_2.png';
 import { IArticle } from '../../types/auth.interface';
-import { useAppDispatch } from '../../Store/customHooks';
+import { useAppDispatch, useAppSelector } from '../../Store/customHooks';
 import { deleteLike, setLike } from '../../Store/Reducers/SingleArticleSlice';
 import { useState } from 'react';
 
@@ -25,6 +25,7 @@ const ArticleItem = ({
   };
   const artDate = new Intl.DateTimeFormat('en-Us', dateOptions);
   const dispatch = useAppDispatch();
+  const { isAuth } = useAppSelector((state) => state.reg);
   const [favoritedLocal, setFavoritedLocal] = useState(favorited);
   const [favoritesCountLocal, setFavoritesCountLocal] = useState(favoritesCount);
 
@@ -47,9 +48,9 @@ const ArticleItem = ({
       <div>
         <div className={style.card_title}>
           <Link to={`/${slug}`}>
-            <p className={style.card_title__title}>{title}</p>
+            <p className={style.card_title__title}>{`${textCut(title, 40)}...`}</p>
           </Link>
-          <button onClick={handleClick}>
+          <button onClick={handleClick} disabled={!isAuth}>
             <img
               className={style.card_title__like}
               src={favoritedLocal ? like : nonlike}
@@ -68,7 +69,7 @@ const ArticleItem = ({
             );
           })}
         </p>
-        <p className={style.description}>{`${textCut(description, 200)}...`}</p>
+        <p className={style.description}>{`${textCut(description, 80)}...`}</p>
       </div>
       <div className={style.userInfo}>
         <div>

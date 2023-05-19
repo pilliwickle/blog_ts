@@ -1,13 +1,16 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ILoginForm, ILogin } from './types';
-import { useAppDispatch } from '../../Store/customHooks';
+import { useAppDispatch, useAppSelector } from '../../Store/customHooks';
 import { login } from '../../Store/Reducers/AuthSlice';
 import style from './LoginPage.module.scss';
+import { Alert, Space } from 'antd';
 
 const SignInPage: FC = () => {
   const dispatch = useAppDispatch();
+  const { error, isAuth } = useAppSelector((state) => state.reg);
+
   const {
     register,
     formState: { errors, isValid },
@@ -28,11 +31,21 @@ const SignInPage: FC = () => {
     };
     reset();
     dispatch(login(requestData));
-    navigate('/', { replace: true });
   };
+
+  useEffect(() => {
+    if (isAuth) {
+      navigate('/', { replace: true });
+    }
+  }, [isAuth]);
 
   return (
     <div className={style.LoginPage}>
+      {error && (
+        <Space direction="vertical" style={{ width: '100%', alignItems: 'center' }}>
+          <Alert message={error} type="error" />
+        </Space>
+      )}
       <div className={style.LoginPage_form}>
         <h2 className={style.LoginPage_title}>Sign in</h2>
         <form onSubmit={handleSubmit(onSubmit)} className={style.input_form}>
@@ -41,11 +54,11 @@ const SignInPage: FC = () => {
             <input
               {...register('email', {
                 required: 'email is not correct',
-                pattern: {
-                  value:
-                    /^((([0-9A-Za-z]{1}[-0-9A-z.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я.]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}.){1,2}[-A-Za-z]{2,})$/u,
-                  message: 'Please enter valid Email!',
-                },
+                // pattern: {
+                //   // value:
+                //   // /^((([0-9A-Za-z]{1}[-0-9A-z.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я.]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}.){1,2}[-A-Za-z]{2,})$/u,
+                //   message: 'Please enter valid Email!',
+                // },
               })}
               type="email"
               placeholder="Email address"

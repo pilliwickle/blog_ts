@@ -46,7 +46,7 @@ export const editProfile = createAsyncThunk<
       'Content-type': 'application/json',
       Authorization: `Token ${token}`,
     },
-    body: JSON.stringify({ editInfo }),
+    body: JSON.stringify(editInfo),
   });
 
   if (!response.ok) {

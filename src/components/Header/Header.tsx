@@ -46,7 +46,7 @@ const Header: FC = () => {
               Sign In
             </Link>
           </button>
-          <Link to="/sign-up" className={style.panel_btn_auth}>
+          <Link to="/sign-up" className={style.btn_auth}>
             Sign Up
           </Link>
         </div>

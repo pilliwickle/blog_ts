@@ -1,6 +1,6 @@
 import { AnyAction, createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ILogin } from '../../pages/LoginPage/types';
-import { IAuthRequest } from '../../types/auth.interface';
+import { IAuthRequest } from '../../pages/AuthPage/types';
 
 export interface IResponse {
   username: string;
@@ -51,6 +51,7 @@ export const registration = createAsyncThunk<IResponse, IAuthRequest, { rejectVa
     }
 
     const data = await response.json();
+    localStorage.setItem('token', data.user.token);
     return data.user as IResponse;
   }
 );
@@ -138,7 +139,7 @@ const slice = createSlice({
         state.isAuth = true;
       })
       .addCase(logOut.fulfilled, (state) => {
-        state.isAuth = !state.isAuth;
+        state.isAuth = false;
       })
       .addMatcher(isError, (state, action: PayloadAction<string>) => {
         state.error = action.payload;

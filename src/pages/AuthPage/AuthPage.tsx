@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { IAuthRequest, ISubmitForm } from '../../types/auth.interface';
+import { IAuthRequest, ISubmitForm } from './types';
 import { useAppDispatch } from '../../Store/customHooks';
 import { registration } from '../../Store/Reducers/AuthSlice';
 import style from './AuthPage.module.scss';
@@ -129,7 +129,7 @@ const RegPage: FC = () => {
             I agree to the processing of my personal information
           </label>
           {errors.checkbox && <p className={style.error}>{errors.checkbox.message}</p>}
-          <button className={style.formBtn}>
+          <button className={style.input_btn}>
             <input type="submit" value="Create" disabled={!isValid} />
           </button>
         </form>

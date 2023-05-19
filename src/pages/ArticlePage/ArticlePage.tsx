@@ -10,7 +10,7 @@ import style from './ArticlePage.module.scss';
 import nonlike from '../../assets/images/heart_1.png';
 import like from '../../assets/images/heart_2.png';
 import { deleteArticle } from '../../Store/Reducers/DeleteSlice';
-import { Alert, message, Popconfirm, Space, Spin } from 'antd';
+import { Alert, message, Space, Spin, Popconfirm } from 'antd';
 
 const ArticlePage: FC = () => {
   const { slug } = useParams();
@@ -18,6 +18,7 @@ const ArticlePage: FC = () => {
   const { loading, error } = useAppSelector((state) => state.article);
   const { createdAt, author, tagList, title, body, description, favoritesCount, favorited } =
     useAppSelector((state) => state.article.article);
+  const { isAuth } = useAppSelector((state) => state.reg);
   const navigate = useNavigate();
 
   const onClick = () => {
@@ -72,7 +73,7 @@ const ArticlePage: FC = () => {
         <div className={style.card_info}>
           <div className={style.card_title}>
             <p className={style.card_title__title}>{title}</p>
-            <button onClick={handleClick}>
+            <button onClick={handleClick} disabled={!isAuth}>
               <img src={favorited ? like : nonlike} alt="like" />
             </button>
             <p className={style.card_title__likeCount}>{favoritesCount}</p>
